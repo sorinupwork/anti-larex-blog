@@ -15,7 +15,9 @@ function Header() {
             alt="logo"
           />
         </Link>
-        <h1>Illegal Recruitment</h1>
+        <Link href="/">
+          <h1 style={{ cursor: "pointer" }}>Illegal Recruitment</h1>
+        </Link>
       </div>
 
       <div>

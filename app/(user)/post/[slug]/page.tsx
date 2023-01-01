@@ -43,19 +43,38 @@ async function Post({ params: { slug } }: Props) {
   const post: Post = await client.fetch(query, { slug });
 
   return (
-    <article className="px-10 pb-28">
-      <section className="space-y-2 border border-[#f7ab0a] text-white">
+    <article className="px-10 pb-28 relative">
+      <section className="space-y-2 border border-[#f7ab0a] text-white relative">
         <div className="relative min-h-56 flex flex-col md:flex-row justify-between">
-          <div className="absolute top-0 w-full h-full opacity-10 blur-sm p-10">
+          <div
+            // className="absolute top-0 w-full h-full opacity-10 blur-sm p-10"
+            style={{
+              position: "absolute",
+              top: 0,
+              width: "100%",
+              height: "100%",
+              opacity: 0.15,
+              padding: "2.5rem",
+            }}
+          >
             <Image
-              className="object-cover object-center mx-auto"
+              // className="object-cover object-center mx-auto"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
               src={urlFor(post.mainImage).url()}
               alt={post.author.name}
               fill
             />
           </div>
 
-          <section className="p-5 bg-[#f7ab0a] w-full">
+          <section
+            // className="p-5 bg-red-200 w-full"
+            style={{ background: "#F7AB0A", width: "100%", padding: "1.25rem" }}
+          >
             <div className="flex flex-col md:flex-row justify-between gap-y-5">
               <div>
                 <h1 className="text-4xl font-extrabold">{post.title}</h1>
@@ -86,11 +105,20 @@ async function Post({ params: { slug } }: Props) {
 
             <div>
               <h2 className="italic pt-10">{post.description}</h2>
-              <div className="flex items-center justify-end mt-auto space-x-2">
+              <div
+                className="flex items-center justify-end mt-auto space-x-2"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                  marginTop: "auto",
+                }}
+              >
                 {post.categories.map((category) => (
                   <p
                     key={category._id}
-                    className="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold mt-4"
+                    className="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4"
+                    style={{ background: "rgb(31, 41, 55)" }}
                   >
                     {category.title}
                   </p>
